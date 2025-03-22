@@ -1,42 +1,120 @@
+/* Remove the restrictive max-width that limits full-width layout */
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: left;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
 }
 
-@keyframes logo-spin {
+/* Fix any input styling issues with dark mode */
+input,
+textarea {
+  color: #374151 !important;
+}
+
+/* For focus outline on form elements */
+.focus\:ring-indigo-500:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgba(99, 102, 241, var(--tw-ring-opacity));
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(99, 102, 241, 0.5) transparent;
+}
+
+/* For Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(99, 102, 241, 0.5);
+  border-radius: 20px;
+}
+
+/* Animations */
+@keyframes fadeIn {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Add responsive padding utility classes */
+.section-padding {
+  padding: 4rem 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .section-padding {
+    padding: 5rem 2rem;
   }
 }
 
-.card {
-  padding: 2em;
+@media (min-width: 1024px) {
+  .section-padding {
+    padding: 6rem 2rem;
+  }
 }
 
-.read-the-docs {
-  color: #888;
+/* Fix spacing issues on mobile */
+.container-fluid {
+  width: 100%;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 640px) {
+  .container-fluid {
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-fluid {
+    padding-right: 2rem;
+    padding-left: 2rem;
+  }
+}
+
+/* Icon sizing */
+.icon-sm {
+  height: 1.25rem; /* 20px */
+  width: 1.25rem;
+}
+
+.icon-md {
+  height: 1.5rem; /* 24px */
+  width: 1.5rem;
+}
+
+/* Additional image scaling controls */
+.img-contain {
+  object-fit: contain;
+}
+
+.img-responsive {
+  max-width: 100%;
+  height: auto;
 }
