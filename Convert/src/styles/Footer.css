@@ -1,9 +1,9 @@
 /* Footer styling */
 .main-footer {
-  background-color: rgba(15, 23, 42, 0.8);
+  background-color: rgba(17, 53, 138, 0.8);
   backdrop-filter: blur(10px);
   padding: 70px 0 30px;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(130, 15, 15, 0.05);
 }
 
 /* Footer grid layout */

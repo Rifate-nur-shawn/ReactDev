@@ -1,0 +1,98 @@
+@import "global.css";
+@import "animations.css";
+@import "Hero.css";
+@import "Header.css";
+@import "Footer.css";
+@import "Sections.css";
+@import "Particles.css";
+
+/* Additional styles from presync.tech template */
+.bg-navy-800 {
+  background-color: #1e293b;
+}
+
+/* Additional tailwind-like utilities */
+.bg-gradient-to-br {
+  background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
+}
+
+.from-gray-900 {
+  --tw-gradient-from: #111827;
+  --tw-gradient-stops: var(--tw-gradient-from),
+    var(--tw-gradient-to, rgba(17, 24, 39, 0));
+}
+
+.via-blue-900 {
+  --tw-gradient-stops: var(--tw-gradient-from), #1e3a8a,
+    var(--tw-gradient-to, rgba(30, 58, 138, 0));
+}
+
+.to-gray-900 {
+  --tw-gradient-to: #111827;
+}
+
+.-z-10 {
+  z-index: -10;
+}
+
+.inset-0 {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.lg\:grid-cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.md\:grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.py-8 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.h-48 {
+  height: 12rem;
+}
+
+.object-cover {
+  object-fit: cover;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.gap-2 {
+  gap: 0.5rem;
+}
+
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.py-1 {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.border-b-4 {
+  border-bottom-width: 4px;
+}

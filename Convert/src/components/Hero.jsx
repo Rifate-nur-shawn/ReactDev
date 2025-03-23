@@ -7,25 +7,19 @@ const Hero = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   useEffect(() => {
-    // Check for mobile viewport
+    // Responsive check
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
     };
-
     window.addEventListener("resize", handleResize);
-    handleResize();
 
-    // Initialize animations
-    const animateElements = document.querySelectorAll(
-      "#home .animate-on-scroll"
-    );
-    animateElements.forEach((element) => {
+    // Initialize animations immediately
+    document.querySelectorAll("#home .animate-on-scroll").forEach((element) => {
       element.classList.add("animated");
     });
 
-    // Only setup mouse interactions on non-mobile devices
+    // Mouse effect for desktop only
     if (!isMobile) {
-      // Mouse move effect for hero cards
       const handleMouseMove = (e) => {
         const { clientX, clientY } = e;
         const { left, top, width, height } =
@@ -34,9 +28,9 @@ const Hero = () => {
         const x = (clientX - left) / width - 0.5;
         const y = (clientY - top) / height - 0.5;
 
-        heroCardsRef.current.forEach((card, cardIndex) => {
+        heroCardsRef.current.forEach((card, index) => {
           if (card) {
-            const factor = (cardIndex + 1) * 10;
+            const factor = (index + 1) * 10;
             card.style.transform = `translate(${x * factor}px, ${
               y * factor
             }px)`;
@@ -46,22 +40,20 @@ const Hero = () => {
 
       const handleMouseLeave = () => {
         heroCardsRef.current.forEach((card) => {
-          if (card) {
-            card.style.transform = "translate(0, 0)";
-          }
+          if (card) card.style.transform = "translate(0, 0)";
         });
       };
 
-      const heroSection = heroRef.current;
-      if (heroSection) {
-        heroSection.addEventListener("mousemove", handleMouseMove);
-        heroSection.addEventListener("mouseleave", handleMouseLeave);
+      const heroElement = heroRef.current;
+      if (heroElement) {
+        heroElement.addEventListener("mousemove", handleMouseMove);
+        heroElement.addEventListener("mouseleave", handleMouseLeave);
       }
 
       return () => {
-        if (heroSection) {
-          heroSection.removeEventListener("mousemove", handleMouseMove);
-          heroSection.removeEventListener("mouseleave", handleMouseLeave);
+        if (heroElement) {
+          heroElement.removeEventListener("mousemove", handleMouseMove);
+          heroElement.removeEventListener("mouseleave", handleMouseLeave);
         }
       };
     }
@@ -69,7 +61,7 @@ const Hero = () => {
     // Counter animation
     const animateCounters = () => {
       const counterElements = document.querySelectorAll(".counter-value");
-      const speed = 200;
+      const speed = 200; // Lower is faster
 
       counterElements.forEach((counter) => {
         const targetNumber = +counter.dataset.count;
@@ -134,6 +126,7 @@ const Hero = () => {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-white drop-shadow-xl hero-heading">
               Transforming Ideas Into
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-cyan-300 to-blue-300 gradient-text">
+                {" "}
                 Digital Reality
               </span>
             </h1>
@@ -194,7 +187,10 @@ const Hero = () => {
               <div className="grid grid-cols-3 gap-4 features-grid">
                 <div className="flex items-center space-x-2 p-2 rounded-lg transition-all duration-300 hover:bg-white hover:bg-opacity-10 hover:transform hover:-translate-y-1 hover:shadow-lg feature-item">
                   <div className="w-8 h-8 rounded-full flex items-center justify-center bg-gradient-to-r from-blue-600 to-blue-700 shadow-md border border-blue-400 border-opacity-50 feature-icon">
-                    <i className="fas fa-check text-blue-100 text-sm"></i>
+                    <i
+                      className="fas fa-check text-blue-100 text-sm"
+                      aria-hidden="true"
+                    ></i>
                   </div>
                   <span className="text-white text-sm font-medium">
                     Enterprise-grade
@@ -202,7 +198,10 @@ const Hero = () => {
                 </div>
                 <div className="flex items-center space-x-2 p-2 rounded-lg transition-all duration-300 hover:bg-white hover:bg-opacity-10 hover:transform hover:-translate-y-1 hover:shadow-lg feature-item">
                   <div className="w-8 h-8 rounded-full flex items-center justify-center bg-gradient-to-r from-blue-600 to-blue-700 shadow-md border border-blue-400 border-opacity-50 feature-icon">
-                    <i className="fas fa-check text-blue-100 text-sm"></i>
+                    <i
+                      className="fas fa-check text-blue-100 text-sm"
+                      aria-hidden="true"
+                    ></i>
                   </div>
                   <span className="text-white text-sm font-medium">
                     99.9% Uptime
@@ -210,7 +209,10 @@ const Hero = () => {
                 </div>
                 <div className="flex items-center space-x-2 p-2 rounded-lg transition-all duration-300 hover:bg-white hover:bg-opacity-10 hover:transform hover:-translate-y-1 hover:shadow-lg feature-item">
                   <div className="w-8 h-8 rounded-full flex items-center justify-center bg-gradient-to-r from-blue-600 to-blue-700 shadow-md border border-blue-400 border-opacity-50 feature-icon">
-                    <i className="fas fa-check text-blue-100 text-sm"></i>
+                    <i
+                      className="fas fa-check text-blue-100 text-sm"
+                      aria-hidden="true"
+                    ></i>
                   </div>
                   <span className="text-white text-sm font-medium">
                     24/7 Support
@@ -232,7 +234,7 @@ const Hero = () => {
                 ref={(el) => (heroCardsRef.current[0] = el)}
               >
                 <div className="hero-card-icon bg-gradient-to-br from-blue-600 to-blue-700 shadow-lg text-white">
-                  <i className="fas fa-code"></i>
+                  <i className="fas fa-code" aria-hidden="true"></i>
                 </div>
                 <div>
                   <h4 className="text-white font-bold text-sm">MERN Stack</h4>
@@ -246,7 +248,7 @@ const Hero = () => {
                 ref={(el) => (heroCardsRef.current[1] = el)}
               >
                 <div className="hero-card-icon bg-gradient-to-br from-blue-600 to-blue-700 shadow-lg text-white">
-                  <i className="fas fa-robot"></i>
+                  <i className="fas fa-robot" aria-hidden="true"></i>
                 </div>
                 <div>
                   <h4 className="text-white font-bold text-sm">AI & ML</h4>
@@ -258,7 +260,7 @@ const Hero = () => {
                 ref={(el) => (heroCardsRef.current[2] = el)}
               >
                 <div className="hero-card-icon bg-gradient-to-br from-blue-600 to-blue-700 shadow-lg text-white">
-                  <i className="fas fa-database"></i>
+                  <i className="fas fa-database" aria-hidden="true"></i>
                 </div>
                 <div>
                   <h4 className="text-white font-bold text-sm">Data Systems</h4>

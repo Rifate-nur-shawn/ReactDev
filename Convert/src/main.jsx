@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./styles/global.css";
+import "./styles/main.css"; // Import consolidated CSS file
 import App from "./App";
 
 console.log("Main.jsx executing");
@@ -47,9 +47,11 @@ try {
   }
 
   root.render(
-    <ErrorBoundary>
-      <App />
-    </ErrorBoundary>
+    <React.StrictMode>
+      <ErrorBoundary>
+        <App />
+      </ErrorBoundary>
+    </React.StrictMode>
   );
   console.log("App rendered successfully");
 } catch (error) {
